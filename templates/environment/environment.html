@@ -1,4 +1,5 @@
 {% extends "partials/base.html" %}
+{% load static %}
 {% block pagetitle %}Ambientes{% endblock %}
 {% block pageheading %}Ambientes{% endblock pageheading %}
 {% block pageheadingbuttonlink %}{% url "environment_create" %}{% endblock pageheadingbuttonlink %}
@@ -11,7 +12,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="tableEnvironment" width="100%" cellspacing="0">
+            <table class="table table-bordered table-striped" id="tableEnvironment" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Descrição</th>
@@ -33,3 +34,6 @@
     </div>
 </div>
 {% endblock row %}
+{% block scripts %}
+    <script type="module" src="{% static 'js/modules/environment/environment.js' %}"></script>
+{% endblock scripts %}
