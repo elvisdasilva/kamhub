@@ -30,8 +30,24 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                {% for environment in camera_environments %}
+                    <tr>
+                        <td>{{ environment.description }}</td>
+                        <td>{{ environment.created_at|date:"d/m/Y" }}</td>
+                        <td>{{ environment.updated_at|date:"d/m/Y" }}</td>
+                        <td>
+                            {% comment %} <a href="{% url 'environment_update' environment.id %}" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a href="{% url 'environment_delete' environment.id %}" class="btn btn-danger btn-circle btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a> {% endcomment %}
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
+            
         </div>
     </div>
 </div>
