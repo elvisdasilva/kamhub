@@ -20,7 +20,7 @@ from apps.home.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('home/', home, name='home'),
     path('', include('apps.home.urls')),
     path('', include('apps.home.urls')),
     path('', include('apps.environment.urls')),
