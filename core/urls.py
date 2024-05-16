@@ -23,4 +23,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('', include('apps.home.urls')),
     path('', include('apps.home.urls')),
+    path('', include('apps.environment.urls')),
 ]

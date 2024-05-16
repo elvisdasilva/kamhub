@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.home',
     'apps.camera',
+    'apps.environment',
 ]
 
 MIDDLEWARE = [
