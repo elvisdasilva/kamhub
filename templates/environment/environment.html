@@ -1,7 +1,9 @@
 {% extends "partials/base.html" %}
 {% block pagetitle %}Ambientes{% endblock %}
 {% block pageheading %}Ambientes{% endblock pageheading %}
-{% block pageheadingbutton %}Ambiente{% endblock pageheadingbutton %}
+{% block pageheadingbuttonlink %}{% url "environment_create" %}{% endblock pageheadingbuttonlink %}
+{% block pageheadingbuttonicon %}<i class="fas fa-plus fa-sm text-white-50"></i>{% endblock pageheadingbuttonicon %}
+{% block pageheadingbutton %}Adicionar Ambiente{% endblock pageheadingbutton %}
 {% block row %}
 
 {% endblock row %}

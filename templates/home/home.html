@@ -1,6 +1,8 @@
 {% extends "partials/base.html" %}
 {% block pagetitle %}Home{% endblock pagetitle %}
 {% block pageheading %}Dashboard{% endblock pageheading %}
-{% block pageheadingbutton %}Câmera{% endblock pageheadingbutton %}
+{% block pageheadingbuttonlink %}{% url "environment_create" %}{% endblock pageheadingbuttonlink %}
+{% block pageheadingbuttonicon %}<i class="fas fa-plus fa-sm text-white-50"></i>{% endblock pageheadingbuttonicon %}
+{% block pageheadingbutton %}Adicionar Câmera{% endblock pageheadingbutton %}
 {% block row %}
 {% endblock row %}
