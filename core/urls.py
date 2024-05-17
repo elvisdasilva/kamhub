@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),
     path('', include('apps.home.urls')),
-    path('', include('apps.home.urls')),
+    path('', include('apps.camera.urls')),
     path('', include('apps.environment.urls')),
 ]
