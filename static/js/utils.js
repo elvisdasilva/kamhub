@@ -15,3 +15,9 @@ export function defaultOptions() {
 
 	return options;
 }
+
+$(document).ready(function () {
+	setTimeout(function () {
+		$(".alert").remove();
+	}, 5000);
+});
