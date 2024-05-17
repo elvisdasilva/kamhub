@@ -1,0 +1,87 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block pagetitle %}Câmeras{% endblock %}
+{% block pageheading %}Câmeras{% endblock pageheading %}
+{% block pageheadingbuttonlink %}{% url "environment_create" %}{% endblock pageheadingbuttonlink %}
+{% block pageheadingbuttonicon %}<i class="fas fa-plus fa-sm text-white-50"></i>{% endblock pageheadingbuttonicon %}
+{% block pageheadingbutton %}Adicionar Câmera{% endblock pageheadingbutton %}
+{% block row %}
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Lista de Câmeras</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="tableCamera" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Ambiente</th>
+                        <th>IP</th>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Porta</th>
+                        <th>Mostrar no início</th>
+                        <th>Criado em</th>
+                        <th>Atualizado em</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Ambiente</th>
+                        <th>IP</th>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Porta</th>
+                        <th>Mostrar no início</th>
+                        <th>Criado em</th>
+                        <th>Atualizado em</th>
+                        <th>Ações</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                {% for camera in camera %}
+                    <tr>
+                        <td>{{ camera.description }}</td>
+                        <td>{{ camera.camera_environment }}</td>
+                        <td>{{ camera.ip }}</td>
+                        <td>{{ camera.user }}</td>
+                        <td>{{ camera.password }}</td>
+                        <td>{{ camera.port }}</td>
+                        <td>{{ camera.display_on_home }}</td>
+                        <td>{{ camera.created_at|date:"d/m/Y" }}</td>
+                        <td>{{ camera.updated_at|date:"d/m/Y" }}</td>
+                        <td>
+                            {% comment %} <a href="{% url 'environment_update' environment.id %}" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a href="{% url 'environment_delete' environment.id %}" class="btn btn-danger btn-circle btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a> {% endcomment %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+{% endblock row %}
+{% block scripts %}
+    <script type="module" src="{% static 'js/modules/camera/camera.js' %}"></script>
+{% endblock scripts %}
