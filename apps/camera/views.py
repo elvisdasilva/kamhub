@@ -1,4 +1,5 @@
 from django.views.generic import ListView, CreateView
+from apps.camera.forms import CameraForm
 from apps.camera.models import Camera
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -13,7 +14,7 @@ class CameraListView(ListView):
 class CameraCreateView(CreateView):
     template_name = "camera/create_camera.html"
     model = Camera
-    fields = "__all__"
+    form_class = CameraForm
     success_url = reverse_lazy("camera_list")
 
     def form_valid(self, form):
