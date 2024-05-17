@@ -1,0 +1,12 @@
+@media (min-width: 575px) {
+  .mobile-pageheadingbutton {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .mobile-pageheadingbutton {
+    display: block;
+    margin-left: auto;
+  }
+}
