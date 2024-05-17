@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from apps.camera.models import Camera
 
-# Create your views here.
+
+class CameraListView(ListView):
+    template_name = "camera/camera.html"
+    model = Camera
+    context_object_name = "camera"
