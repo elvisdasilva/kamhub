@@ -8,8 +8,6 @@ class Camera(models.Model):
     port = models.IntegerField()
     user = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
     display_on_home = models.BooleanField(default=False)
     camera_environment = models.ForeignKey(
         CameraEnvironment,
@@ -17,6 +15,8 @@ class Camera(models.Model):
         related_name="camera_environment",
         verbose_name="Camera environment",
     )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.description
