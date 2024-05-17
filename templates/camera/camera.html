@@ -63,8 +63,8 @@
                         <td>{{ camera.password }}</td>
                         <td>{{ camera.port }}</td>
                         <td>{{ camera.display_on_home }}</td>
-                        <td>{{ camera.created_at|date:"d/m/Y" }}</td>
-                        <td>{{ camera.updated_at|date:"d/m/Y" }}</td>
+                        <td>{{ camera.created_at|date:"d/m/Y H:i" }}</td>
+                        <td>{{ camera.updated_at|date:"d/m/Y H:i" }}</td>
                         <td>
                             {% comment %} <a href="{% url 'environment_update' environment.id %}" class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-info-circle"></i>
