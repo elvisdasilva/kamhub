@@ -1,0 +1,89 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block pagetitle %}Nova Câmera{% endblock %}
+{% block pageheading %}Nova Câmera{% endblock pageheading %}
+{% block row %}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card shadow mb-4 border-bottom-primary">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Preencha os detalhes da câmera</h6>
+            </div>
+            <form class="user" method="POST">
+                <div class="card-body">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.description.id_for_label }}">Descrição:</label>
+                            {{ form.description }}
+                            {% if form.camera_description.errors %}
+                                <div class="invalid-feedback">{{ form.camera_description.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.camera_environment.id_for_label }}">Ambiente:</label>
+                            {{ form.camera_environment }}
+                            {% if form.camera_environment.errors %}
+                                <div class="invalid-feedback">{{ form.camera_environment.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.ip.id_for_label }}">IP:</label>
+                            {{ form.ip }}
+                            {% if form.ip.errors %}
+                                <div class="invalid-feedback">{{ form.ip.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.port.id_for_label }}">Porta:</label>
+                            {{ form.port }}
+                            {% if form.port.errors %}
+                                <div class="invalid-feedback">{{ form.port.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.user.id_for_label }}">Usuário:</label>
+                           {{ form.user }}
+                            {% if form.user.errors %}
+                                <div class="invalid-feedback">{{ form.user.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.password.id_for_label }}">Senha:</label>
+                            {{ form.password }}
+                            {% if form.password.errors %}
+                                <div class="invalid-feedback">{{ form.password.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <div class="custom-control custom-checkbox small">
+                                {{ form.display_on_home }}
+                                <label class="form-check-label custom-control-label" for="{{ form.display_on_home.id_for_label }}">Mostrar no início</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <a href="{% url 'camera_list' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock row %}
+{% block scripts %}
+    <script type="module" src="{% static 'js/modules/camera/camera.js' %}"></script>
+{% endblock scripts %}
