@@ -4,8 +4,8 @@ from apps.environment.models import CameraEnvironment
 
 class Camera(models.Model):
     description = models.CharField(max_length=100)
-    ip = models.GenericIPAddressField(protocol="both", unpack_ipv4=True, unique=True)
-    port = models.IntegerField()
+    ip = models.CharField(max_length=15)
+    port = models.IntegerField(blank=False, null=False)
     user = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
     display_on_home = models.BooleanField(default=False)
