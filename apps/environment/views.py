@@ -46,6 +46,14 @@ class CameraEnvironmentDeleteView(DeleteView):
     model = CameraEnvironment
     success_url = reverse_lazy("environment_list")
 
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "Ambiente deletado com sucesso.")
-        return super().delete(request, *args, **kwargs)
+    def form_valid(self, form):
+        environment = self.get_object()
+        messages.success(
+            self.request, f"Ambiente {environment.description} excluído com sucesso."
+        )
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["environment"] = self.get_object()
+        return context
