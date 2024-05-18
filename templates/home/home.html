@@ -5,4 +5,45 @@
 {% block pageheadingbuttonicon %}<i class="fas fa-plus fa-sm text-white-50"></i>{% endblock pageheadingbuttonicon %}
 {% block pageheadingbutton %}Adicionar Câmera{% endblock pageheadingbutton %}
 {% block row %}
+{% if cameras %}
+    {% regroup cameras by camera_environment as camera_list %}
+    {% for list in camera_list %}
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-4"><i class="fas fa-fw fa-seedling"></i> {{ list.grouper }}</h4>
+            </div>
+            {% for camera in list.list %}
+                {% if camera.display_on_home %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">{{ camera.description }}</h6>
+                                <a href="{% url "camera_create" %}">
+                                    <button type="button" class="btn btn-sm btn-primary shadow-sm" title="Adicionar Câmera">
+                                        <i class="fas fa-sync-alt fa-sm text-white-50"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe width="560" height="315" src="" title="{{ camera.description }}" frameborder="0" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% else %}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4 border-bottom-primary">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Nenhuma câmera cadastrada</h6>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock row %}
