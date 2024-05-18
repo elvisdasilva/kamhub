@@ -51,12 +51,12 @@
                         <td>{{ environment.created_at|date:"d/m/Y H:i" }}</td>
                         <td>{{ environment.updated_at|date:"d/m/Y H:i" }}</td>
                         <td>
-                            {% comment %} <a href="{% url 'environment_update' environment.id %}" class="btn btn-info btn-circle btn-sm">
-                                <i class="fas fa-info-circle"></i>
+                            <a href="{% url 'environment_update' environment.pk %}" title="Editar" class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-pen"></i>
                             </a>
-                            <a href="{% url 'environment_delete' environment.id %}" class="btn btn-danger btn-circle btn-sm">
+                            <a href="{% url 'environment_delete' environment.pk %}" title="Excluir" class="btn btn-danger btn-circle btn-sm">
                                 <i class="fas fa-trash"></i>
-                            </a> {% endcomment %}
+                            </a> 
                         </td>
                     </tr>
                 {% endfor %}
