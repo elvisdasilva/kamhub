@@ -1,0 +1,32 @@
+{% extends "partials/base.html" %}
+{% block pagetitle %}Editar Ambiente{% endblock %}
+{% block pageheading %}Editar Ambiente{% endblock pageheading %}
+{% block row %}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card shadow mb-4 border-bottom-primary">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Preencha os detalhes do ambiente</h6>
+            </div>
+            <form class="user" method="POST">
+                <div class="card-body">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <label for="{{ form.description.id_for_label }}">Descrição:</label>
+                           {{ form.description }}
+                        </div>
+                    </div>
+                    {% if form.description.errors %}
+                        <small class="text-danger">{{ form.description.errors }}</small>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-right">
+                    <a href="{% url 'environment_list' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock row %}
