@@ -25,9 +25,7 @@
                                 </a>
                             </div>
                             <div class="card-body">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe width="560" height="315" src="" title="{{ camera.description }}" frameborder="0" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                                </div>
+                                <img src="{% url 'stream' camera.user camera.password camera.ip camera.port %}" width="100%" height="auto"></img>
                             </div>
                         </div>
                     </div>
