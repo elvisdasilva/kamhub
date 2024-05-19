@@ -11,7 +11,7 @@ $(document).ready(function () {
 			url: streamUrl,
 			type: "GET",
 			success: function (data) {
-				$("#cameraPreview").attr("src", streamUrl);
+				$("#cameraPreview").attr("src", streamUrl + "?t=" + timestamp);
 				$("#cameraModal").modal("show");
 			},
 			error: function (xhr) {
@@ -36,7 +36,7 @@ $(document).ready(function () {
 			url: streamUrl,
 			type: "GET",
 			success: function (data) {
-				$("#camera-stream-" + camera.id).attr("src", streamUrl);
+				$("#camera-stream-" + camera.id).attr("src", streamUrl + "?t=" + timestamp);
 			},
 			error: function (xhr) {
 				let errorText =
