@@ -10,7 +10,9 @@ class StreamRTSP:
         )
 
         if not cap.isOpened():
+            cap.release()
             raise ValueError("Unable to connect to the RTSP stream. Please check the credentials or the stream URL.")
+        
         while True:
             success, frame = cap.read()
             if not success:
