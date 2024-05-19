@@ -11,4 +11,10 @@ $(document).ready(function () {
 		language: "pt-BR",
 		width: "100%",
 	});
+
+	$(".view-camera").click(function (e) {
+		e.preventDefault();
+		var streamUrl = $(this).data("stream-url");
+		$("#cameraPreview").attr("src", streamUrl);
+	});
 });
