@@ -20,10 +20,10 @@
                             <div class="card-header py-3 d-flex justify-content-between align-items-center">
                                 <h6 class="m-0 font-weight-bold text-primary">{{ camera.description }}</h6>
                                 <div class="d-flex">
-                                    <button class="btn btn-sm btn-primary shadow-sm update-camera" data-stream-url="{% url 'stream' camera.user camera.password camera.ip camera.port %}" title="Atualizar Câmera">
+                                    <a class="btn btn-sm btn-primary shadow-sm update-camera" data-stream-url="{% url 'stream' camera.user camera.password camera.ip camera.port %}" title="Atualizar Câmera">
                                         <i class="fas fa-sync-alt fa-sm text-white-50"></i>
-                                    </button>
-                                    <a href="" class="btn btn-sm btn-primary shadow-sm ml-2" title="Visualizar Câmera">
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-primary shadow-sm ml-2 view-camera" data-toggle="modal" data-target="#cameraModal" data-stream-url="{% url 'stream' camera.user camera.password camera.ip camera.port %}" title="Visualizar Câmera">
                                         <i class="fas fa-eye fa-sm text-white-50"></i>
                                     </a>
                                 </div>
@@ -48,6 +48,7 @@
     </div>
 </div>
 {% endif %}
+{% include "home/modal_camera.html" %}
 {% endblock row %}
 {% block scripts %}
     <script type="module" src="{% static 'js/modules/home/home.js' %}"></script>

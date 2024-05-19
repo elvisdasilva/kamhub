@@ -8,4 +8,10 @@ $(document).ready(function () {
 			$(this).prop("disabled", false);
 		}, 1000);
 	});
+
+	$(".view-camera").click(function (e) {
+		e.preventDefault();
+		var streamUrl = $(this).data("stream-url");
+		$("#cameraPreview").attr("src", streamUrl);
+	});
 });
