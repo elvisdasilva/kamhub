@@ -1,8 +1,10 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views import View
 from apps.camera.forms import CameraForm
 from apps.camera.models import Camera
 from django.urls import reverse_lazy
 from django.contrib import messages
+from apps.camera.services.rtsp import StreamRTSP
 
 
 class CameraListView(ListView):
@@ -57,3 +59,8 @@ class CameraDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context["camera"] = self.get_object()
         return context
+
+
+class StreamView(View):
+    def get(self, request, user, password, ip, port):
+        return StreamRTSP.video_feed(user, password, ip, port)
